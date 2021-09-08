@@ -30,7 +30,7 @@
                             <p class="text-xs font-weight-bold mb-0"><?= $i++ ?></p>
                         </td>
                         <td class="align-middle text-center text-sm">
-                            <a href='/daftar_posluhdes?kode_kec=$[kode_kec]'>
+                            <a href='/daftar_posluhdes?kode_kec='>
                                 <p class="text-xs font-weight-bold mb-0"><?= $row['deskripsi'] ?></p>
                             </a>
                         </td>
