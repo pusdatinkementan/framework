@@ -5,7 +5,7 @@ namespace App\Models\KelembagaanPenyuluhan\Desa;
 use CodeIgniter\Model;
 use \Config\Database;
 
-class DesaModel extends Model
+class PosluhdesModel extends Model
 {
     protected $table      = 'simluhtan';
     //protected $primaryKey = 'id';
@@ -27,24 +27,24 @@ class DesaModel extends Model
     // protected $skipValidation     = false;
 
 
-    public function getDesaTotal($kode_kab)
+    public function getPosluhdesTotal($kode_kec)
     {
         $db = Database::connect();
-        $query = $db->query("select nama_dati2 as nama_kab from tbldati2 where id_dati2='$kode_kab'");
+        $query = $db->query("select deskripsi as nama_kec from tbldaerah where id_daerah='$kode_kec'");
         $row   = $query->getRow();
-        $query2 = $db->query("SELECT count(idpos) as jum_des FROM tb_posluhdes where kode_kab ='$kode_kab'");
+        $query2 = $db->query("SELECT count(idpos) as jum_kec FROM tb_posluhdes where kode_kec ='$kode_kec'");
         $row2   = $query2->getRow();
-        $query3  = $db->query("select id_daerah, deskripsi, count(idpos) as jum 
-                                from tbldaerah a
-                                left join tb_posluhdes b on a.id_daerah=b.kode_kec and b.kode_kab='$kode_kab'
-                                where id_dati2='$kode_kab'
-                                group by id_daerah, deskripsi
-                                order by deskripsi");
+        $query3  = $db->query("select * , b.nm_desa, c.nama as penyuluh_swadaya, a.nama, a.alamat 
+                                from tb_posluhdes a
+                                left join tbldesa b on a.kode_desa=b.id_desa
+                                left join tbldasar_swa c on a.penyuluh_swadaya=c.id_swa 
+                                where kode_kec='$kode_kec'
+                                order by a.nama, kode_desa");
         $results = $query3->getResultArray();
 
         $data =  [
-            'jum_des' => $row2->jum_des,
-            'nama_kab' => $row->nama_kab,
+            'jum_kec' => $row2->jum_kec,
+            'nama_kec' => $row->nama_kec,
             'table_data' => $results,
         ];
 

@@ -85,8 +85,10 @@ $routes->get('/listpoktan', 'KelembagaanPelakuUtama/KelompokTani/ListPokTan::lis
 $routes->get('/kelembagaanpetanilainnya', 'KelembagaanPelakuUtama/KelembagaanPetaniLainnya::kelembagaanpetanilainnya');
 
 $routes->get('/desa', 'KelembagaanPenyuluhan/Desa/Desa::desa');
+$routes->get('/daftar_posluhdes', 'KelembagaanPenyuluhan/Desa/Desa::listdesa');
 $routes->get('/kabupaten_kota', 'KelembagaanPenyuluhan/Kabupaten/Kabupaten::kab');
 $routes->get('/kecamatan', 'KelembagaanPenyuluhan/Kecamatan/Kecamatan::kecamatan');
+$routes->get('/kecamatankec', 'KelembagaanPenyuluhan/Kecamatan/KecamatanKec::kecamatan');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -3,7 +3,9 @@
 <?= $this->section('content') ?>
 
 
-<center><h2> Daftar Posluhdes di Kab <?= ucwords(strtolower($nama_kabupaten)) ?> </h2></center>
+<center>
+    <h4> Daftar Posluhdes di Kab <?= ucwords(strtolower($nama_kabupaten)) ?> </h4>
+</center>
 <div class="card">
     <div class="table-responsive">
         <table class="table align-items-center mb-0">
@@ -11,38 +13,34 @@
                 <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">No</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Nama Kecamatan</th>
-                   
+
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Jumlah<br>Posluhdes</th>
-                   
+
                     <th class="text-secondary opacity-7"></th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-            $i = 1;
-            foreach ($tabel_data as $row) {
-            ?>
-            
-                <tr>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"><?= $i++ ?></p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"><?= $row['deskripsi'] ?></p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"><?= $row['jum'] ?></p>
-                  
+                <?php
+                $i = 1;
+                foreach ($tabel_data as $row) {
+                ?>
+
+                    <tr>
                         <td class="align-middle text-center text-sm">
-                        <a href="/gapoktan/list"></a><button type="button" class="btn btn-info btn-sm">
-                             Detail
-                        </button>
-                        </a>
-                    </td>
-                </tr>
-            <?php
-            }
-            ?>
+                            <p class="text-xs font-weight-bold mb-0"><?= $i++ ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <a href='/daftar_posluhdes?kode_kec='>
+                                <p class="text-xs font-weight-bold mb-0"><?= $row['deskripsi'] ?></p>
+                            </a>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['jum'] ?></p>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
 
             </tbody>
             <tfoot>
@@ -51,23 +49,15 @@
                         <p class="text-xs font-weight-bold mb-0"></p>
                     </th>
                     <th class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">JUMLAH</p>
+                        <p class="text-s font-weight-bold mb-0"><b>JUMLAH</b></p>
                     </th>
                     <th class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"><?= $jum_des ?></p>
-                    </th>
-                
-
-                    <th class="align-middle text-center text-sm">
-                        <button type="button" class="btn btn-info btn-sm">
-                             Detail
-                        </button>
-                        </a>
+                        <p class="text-s font-weight-bold mb-0"><b><?= $jum_des ?></b></p>
                     </th>
                 </tr>
             </tfoot>
         </table>
-               
+
     </div>
 </div>
 </tbody>

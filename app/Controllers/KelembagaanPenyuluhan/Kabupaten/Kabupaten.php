@@ -16,7 +16,7 @@ class Kabupaten extends BaseController
         $kab_data = $kab_model->getKabTotal($kode_kab);
 
         $data = [
-            //'jum_des' => $desa_data['jum_des'],
+            // 'jumpns' => $kab_data['jumpns'],
             'nama_kabupaten' => $kab_data['nama_kab'],
             'tabel_data' => $kab_data['table_data'],
             'title' => 'Kabupaten',

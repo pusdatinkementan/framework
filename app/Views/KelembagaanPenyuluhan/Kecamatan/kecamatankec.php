@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <center>
-    <h3> Data Kelembagaan Penyuluhan Pertanian <br>Kab <?= ucwords(strtolower($nama_kabupaten)) ?> </h3>
+    <h5> Daftar Kelembagaan Penyuluhan Pertanian Tingkat Kecamatan (BP3K) <br>Kecamatan <?= ucwords(strtolower($nama_kec)) ?> Kab <?= ucwords(strtolower($nama_kabupaten)) ?> </h5>
 </center>
 <a href="#"><button type="button" class="btn bg-gradient-primary">+ Tambah Data</button></a>
 <div class="card">
@@ -12,9 +12,10 @@
             <thead>
                 <tr>
                     <td width="5" class="text-uppercase text-secondary text-xxs font-weight-bolder">No</td>
-                    <td width="180" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Nama Lembaga</td>
-                    <td width="300" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Alamat</td>
-                    <td width="150" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Nama<br>Pimpinan</td>
+                    <td width="180" class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lembaga</td>
+                    <td width="180" class="text-uppercase text-secondary text-xxs font-weight-bolder">Alamat</td>
+                    <td width="300" class="text-uppercase text-secondary text-xxs font-weight-bolder">Wilayah<br>(Kecamatan)</td>
+                    <td width="150" class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama<br>Pimpinan</td>
                     <td width="150" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Jumlah<br>Penyuluh<br>PNS</td>
                     <td width="150" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Jumlah<br>Penyuluh<br>THL</td>
                     <td width="150" class="text-uppercase text-secondary text-xxs font-weight-bolder" style="text-align: center;">Jumlah<br>Penyuluh<br>Swadaya</td>
@@ -35,13 +36,16 @@
                         <td class="align-middle text-center text-sm">
                             <p class="text-xs font-weight-bold mb-0"><?= $i++ ?></p>
                         </td>
-                        <td class="align-middle text-center text-sm">
-                            <p class="text-xs font-weight-bold mb-0"><?= $row['nama_bapel'] ?></p>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['nama_bpp'] ?></p>
                         </td>
-                        <td class="align-middle text-center text-sm">
+                        <td>
                             <p class="text-xs font-weight-bold mb-0"><?= $row['alamat'] ?></p>
                         </td>
-                        <td class="align-middle text-center text-sm">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">- <?= $row['deskripsi'] ?> .</p>
+                        </td>
+                        <td>
                             <p class="text-xs font-weight-bold mb-0"><?= $row['ketua'] ?></p>
                         </td>
                         <td class="align-middle text-center text-sm">
@@ -71,12 +75,15 @@
                                     <i class="fas fa-edit"></i> Ubah
                                 </button>
                             </a>
+                            <button type="button" class="btn bg-gradient-danger btn-sm">
+                                <i class="fas fa-trash"></i> Hapus
+                            </button>
+                            </a>
                         </td>
                     </tr>
                 <?php
                 }
                 ?>
-
                 <!-- Modal -->
                 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
