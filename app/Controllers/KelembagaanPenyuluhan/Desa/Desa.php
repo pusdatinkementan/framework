@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controllers\KelembagaanPenyuluhan\Desa;
+
 use App\Controllers\BaseController;
 use App\Models\KelembagaanPenyuluhan\Desa\DesaModel;
+use App\Models\KelembagaanPenyuluhan\Desa\PosluhdesModel;
 
 class Desa extends BaseController
 {
@@ -24,15 +26,24 @@ class Desa extends BaseController
 
         return view('KelembagaanPenyuluhan/Desa/desa', $data);
     }
-  
+
     public function listdesa()
     {
-     
+
+        $get_param = $this->request->getGet();
+
+        $kode_kec = $get_param['kode_kec'];
+        $posluhdes_model = new PosluhdesModel;
+        $posluhdes_data = $posluhdes_model->getPosluhdesTotal($kode_kec);
+
         $data = [
-            
-           
-            'name' => 'Desa'
+            'jum_kec' => $posluhdes_data['jum_kec'],
+            'nama_kecamatan' => $posluhdes_data['nama_kec'],
+            'tabel_data' => $posluhdes_data['table_data'],
+            'title' => 'Daftar Posluhdes',
+            'name' => 'Posluhdes'
         ];
-        return view('KelembagaanPenyuluhan/Desa/listdesa', $data);
+
+        return view('KelembagaanPenyuluhan/Desa/daftar_posluhdes', $data);
     }
 }

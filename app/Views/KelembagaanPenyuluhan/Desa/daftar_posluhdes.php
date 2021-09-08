@@ -2,7 +2,10 @@
 
 <?= $this->section('content') ?>
 
-
+<center>
+    <h4> Daftar Posluhdes di Kecamatan <?= ucwords(strtolower($nama_kecamatan)) ?> </h4>
+    <p> Ditemukan <?= ucwords(strtolower($jum_kec)) ?> Data </p>
+</center>
 <button type="button" class="btn bg-gradient-primary">+ Tambah Data</button>
 <div class="card">
     <div class="table-responsive">
@@ -23,54 +26,57 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">1</p>
-                    </td>
-                    <td width="50">
-                        <p class="text-xs font-weight-bold mb-0">ARJOSARI</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">Adil Makmur</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">DESA ARJOSARI KECAMATAN ARJOSARI KABUPATEN PACITAN</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">WASESO</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">DIMYATI</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">TUMANGIN</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"></p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">194</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0"></p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <a href="#">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-form" class="btn bg-gradient-warning">
-                                <i class="fas fa-edit"></i> Ubah
-                            </button>
-                        </a>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <a href="#">
-                            <button type="button" class="btn bg-gradient-danger">
-                                <i class="fas fa-trash"></i> Hapus
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-
-
+                <?php
+                $i = 1;
+                foreach ($tabel_data as $row) {
+                ?>
+                    <tr>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $i++ ?></p>
+                        </td>
+                        <td width="50">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['nm_desa'] ?></p>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['nama'] ?></p>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['alamat'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['ketua'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['sekretaris'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['bendahara'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['tahun_berdiri'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['jum_anggota'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?= $row['penyuluh_swadaya'] ?></p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <a href="#">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-form" class="btn bg-gradient-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Ubah
+                                </button>
+                            </a>
+                            <a href="#">
+                                <button type="button" class="btn bg-gradient-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
 
                 <!-- Modal -->
                 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
