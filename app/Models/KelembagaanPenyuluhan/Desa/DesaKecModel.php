@@ -5,7 +5,7 @@ namespace App\Models\KelembagaanPenyuluhan\Desa;
 use CodeIgniter\Model;
 use \Config\Database;
 
-class PosluhdesModel extends Model
+class DesaKecModel extends Model
 {
     protected $table      = 'simluhtan';
     //protected $primaryKey = 'id';
@@ -27,23 +27,23 @@ class PosluhdesModel extends Model
     // protected $skipValidation     = false;
 
 
-    public function getPosluhdesTotal($kode_kec)
+    public function getDesaTotal($kode_bpp)
     {
         $db = Database::connect();
-        $query = $db->query("select deskripsi as nama_kec from tbldaerah where id_daerah='$kode_kec'");
+        $query = $db->query("select nama_bpp as nama_kec from tblbpp where kecamatan='$kode_bpp'");
         $row   = $query->getRow();
-        $query2 = $db->query("SELECT count(idpos) as jum_kec FROM tb_posluhdes where kode_kec ='$kode_kec'");
+        $query2 = $db->query("SELECT count(idpos) as jum_des FROM tb_posluhdes where kode_kec ='$kode_bpp'");
         $row2   = $query2->getRow();
-        $query3  = $db->query("select * , b.nm_desa, c.nama as penyuluh_swadaya, a.nama, a.alamat 
-                                from tb_posluhdes a
-                                left join tbldesa b on a.kode_desa=b.id_desa
-                                left join tbldasar_swa c on a.penyuluh_swadaya=c.id_swa 
-                                where kode_kec='$kode_kec'
-                                order by a.nama, a.kode_desa,b.nm_desa");
+        $query3  = $db->query(" select id_daerah, deskripsi, count(idpos) as jum  
+                                from tbldaerah a
+                                left join tb_posluhdes b on a.id_daerah=b.kode_kec
+                                where id_daerah='$kode_bpp'
+                                group by id_daerah, deskripsi
+                                order by deskripsi");
         $results = $query3->getResultArray();
 
         $data =  [
-            'jum_kec' => $row2->jum_kec,
+            'jum_des' => $row2->jum_des,
             'nama_kec' => $row->nama_kec,
             'table_data' => $results,
         ];

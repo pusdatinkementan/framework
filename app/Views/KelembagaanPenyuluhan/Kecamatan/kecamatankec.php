@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <center>
-    <h5> Daftar Kelembagaan Penyuluhan Pertanian Tingkat Kecamatan (BP3K) <br>Kecamatan <?= ucwords(strtolower($nama_kec)) ?> Kab <?= ucwords(strtolower($nama_kabupaten)) ?> </h5>
+    <h5> Daftar Kelembagaan Penyuluhan Pertanian Tingkat Kecamatan (BP3K) <br>Kecamatan <?= ucwords(strtolower($nama_kecamatan)) ?> </h5>
 </center>
 <a href="#"><button type="button" class="btn bg-gradient-primary">+ Tambah Data</button></a>
 <div class="card">
@@ -74,10 +74,6 @@
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#modal-form" class="btn bg-gradient-warning btn-sm">
                                     <i class="fas fa-edit"></i> Ubah
                                 </button>
-                            </a>
-                            <button type="button" class="btn bg-gradient-danger btn-sm">
-                                <i class="fas fa-trash"></i> Hapus
-                            </button>
                             </a>
                         </td>
                     </tr>

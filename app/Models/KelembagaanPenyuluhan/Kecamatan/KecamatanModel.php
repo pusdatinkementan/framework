@@ -34,11 +34,11 @@ class KecamatanModel extends Model
         $row   = $query->getRow();
         $query2 = $db->query("SELECT count(idpos) as jum_des FROM tb_posluhdes where kode_kab ='$kode_kab'");
         $row2   = $query2->getRow();
-        $query3  = $db->query("select * , b.nama, c.deskripsi, a.alamat,f.jumgap,f.kode_bp3k,g.jumkep,d.jumpok,e.jumthl,h.jumpns,i.unit_kerja
+        $query3  = $db->query("select * , b.nama, c.deskripsi, a.tgl_update, a.alamat,f.jumgap,f.kode_bp3k,g.jumkep,d.jumpok,e.jumthl,h.jumpns,i.unit_kerja
                                 from tblbpp a
                                 left join tbldasar b on a.nama_koord_penyuluh=b.nip
                                 left join tbldaerah c on a.kecamatan=c.id_daerah  
-                                left join (select kode_bp3k, count(id_poktan) as jumpok from tb_poktan GROUP BY kode_bp3k)d on a.kode_bp3k=.d.kode_bp3k
+                                left join (select kode_bp3k, count(id_poktan) as jumpok from tb_poktan GROUP BY kode_bp3k)d on a.kode_bp3k=d.kode_bp3k
                                 left join(select unit_kerja,count(id_thl) as jumthl from tbldasar_thl GROUP BY unit_kerja) e on  a.id=e.unit_kerja
                                 left join(select kode_bp3k, count(id_gap) as jumgap from tb_gapoktan GROUP BY kode_bp3k)f on a.kode_bp3k=f.kode_bp3k
                                 left join(select kode_kec,count(id_kep) as jumkep from tb_kep GROUP BY kode_kec )g on a.kecamatan=g.kode_kec

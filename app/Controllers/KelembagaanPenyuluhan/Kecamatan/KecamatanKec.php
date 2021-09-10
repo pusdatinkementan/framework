@@ -3,37 +3,26 @@
 namespace App\Controllers\KelembagaanPenyuluhan\Kecamatan;
 
 use App\Controllers\BaseController;
-use App\Models\KelembagaanPenyuluhan\Kecamatan\KecamatanModel;
+use App\Models\KelembagaanPenyuluhan\Kecamatan\KecamatanKecModel;
 
-class Kecamatan extends BaseController
+class KecamatanKec extends BaseController
 {
     public function kecamatan()
     {
         $get_param = $this->request->getGet();
 
-        $kode_kab = $get_param['kode_kab'];
-        $kec_model = new KecamatanModel;
-        $kec_data = $kec_model->getKecTotal($kode_kab);
+        $kode_kec = $get_param['kode_kec'];
+        $kec_model = new KecamatanKecModel;
+        $bpp_data = $kec_model->getKecTotal($kode_kec);
 
         $data = [
             //'jumpns' => $kec_data['jumpns'],
-            'nama_kabupaten' => $kec_data['nama_kab'],
-            'tabel_data' => $kec_data['table_data'],
+            'nama_kecamatan' => $bpp_data['nama_kec'],
+            'tabel_data' => $bpp_data['table_data'],
             'title' => 'Kecamatan',
             'name' => 'Kecamatan'
         ];
 
-        return view('KelembagaanPenyuluhan/Kecamatan/kecamatan', $data);
+        return view('KelembagaanPenyuluhan/Kecamatan/kecamatankec', $data);
     }
-
-    // public function listdesa()
-    // {
-
-    //     $data = [
-
-
-    //         'name' => 'Desa'
-    //     ];
-    //     return view('KelembagaanPenyuluhan/Desa/listdesa', $data);
-    // }
 }
